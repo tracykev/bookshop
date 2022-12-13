@@ -1669,8 +1669,8 @@ If you're using other components in your layouts, add the `bookshop_bindings` pa
 .*<layout>.html*
 [source,go]
 ----
-{{ partial "bookshop_bindings" `(dict hero_text .Params.hero_text)` }}
-{{ partial "bookshop" (slice "hero" (dict hero_text .Params.hero_text)) }}
+{{ partial "bookshop_bindings" `(dict "hero_text" .Params.hero_text)` }}
+{{ partial "bookshop" (slice "hero" (dict "hero_text" .Params.hero_text)) }}
 ----
 endif::hugo[]
 
@@ -1874,7 +1874,7 @@ hero_text: "Hello World"
   This component can make the connection between "text" and ".Params.hero_text",
   and will work as expected in the visual editor.
 -->
-{{ partial "bookshop_bindings" `(dict text .Params.hero_text)` }}
+{{ partial "bookshop_bindings" `(dict "text" .Params.hero_text)` }}
 {{ partial "bookshop" (slice "hero" (dict "text" .Params.hero_text)) }}
 
 {{ my_title := .Params.hero_text }}
@@ -1884,7 +1884,7 @@ hero_text: "Hello World"
   and will error in the visual editor.
   (Assignments _inside_ Bookshop components will work correctly)
 -->
-{{ partial "bookshop_bindings" `(dict text $my_title)` }}
+{{ partial "bookshop_bindings" `(dict "text" $my_title)` }}
 {{ partial "bookshop" (slice "hero" (dict "text" $my_title)) }}
 ```
 
